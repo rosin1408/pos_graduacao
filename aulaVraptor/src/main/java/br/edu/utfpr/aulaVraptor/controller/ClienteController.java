@@ -46,7 +46,7 @@ public class ClienteController {
 	@Delete
 	@Path("/{cliente.codigo}")
 	public void remover(Cliente cliente) {
-        dao.remover(cliente.getCodigo());
+        dao.remover(Cliente.class, cliente.getCodigo());
         result.redirectTo(this).listar();
     }
 	

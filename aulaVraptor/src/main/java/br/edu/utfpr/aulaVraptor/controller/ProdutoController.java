@@ -68,7 +68,7 @@ public class ProdutoController {
 	@Delete
 	@Path("/{produto.codigo}")
 	public void remover(Produto produto) {
-		dao.remover(produto.getCodigo());
+		dao.remover(Produto.class, produto.getCodigo());
 		result.redirectTo(this).listar();
 	}
 }

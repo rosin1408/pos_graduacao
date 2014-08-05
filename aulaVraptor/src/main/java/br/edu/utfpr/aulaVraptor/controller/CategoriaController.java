@@ -48,7 +48,7 @@ public class CategoriaController {
 	@Delete
 	@Path("/{categoria.codigo}")
 	public void remover(Categoria categoria) {
-		dao.remover(categoria.getCodigo());
+		dao.remover(Categoria.class, categoria.getCodigo());
 		result.redirectTo(this).listar();
 	}
 	
