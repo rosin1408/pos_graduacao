@@ -15,7 +15,28 @@
 			<div class="form-group">
 				<label class="col-xs-3 control-label" for="nome">Nome:</label>
 				<div class="col-xs-6">
-					<input id="nome" name="cliente.nome" placeholder=""
+					<input id="nome" name="cliente.nome" placeholder="" value="${cliente.nome}"
+						class="form-control input-md" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-3 control-label" for="cpf">CPF:</label>
+				<div class="col-xs-6">
+					<input id="nome" name="cliente.cpf" placeholder="" value="${cliente.cpf}"
+						class="form-control input-md" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-3 control-label" for="telefone">Telefone:</label>
+				<div class="col-xs-6">
+					<input id="nome" name="cliente.telefone" placeholder="" value="${cliente.telefone}"
+						class="form-control input-md" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-3 control-label" for="email">Email:</label>
+				<div class="col-xs-6">
+					<input id="nome" name="cliente.email" placeholder="" value="${cliente.email}"
 						class="form-control input-md" type="text">
 				</div>
 			</div>

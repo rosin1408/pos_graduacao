@@ -23,17 +23,17 @@ public @Data class Cliente{
 	@Column(nullable=false, length=100)
 	private String nome;
 	
-	//@NotNull
+	@NotNull
     private String cpf;
 	
-	//@NotNull
+	@NotNull
     private String telefone;
 	
-	//@NotNull
+	@NotNull
     private String email;
 	
 	@OneToMany(mappedBy="cliente")
-	private List<Venda> vendas;
+	private List<Pedido> pedidos;
 	
 	public Cliente(Long codigo) {
 		this.codigo = codigo;
@@ -42,9 +42,7 @@ public @Data class Cliente{
 	public Cliente() {
 	}
 
-	public Cliente(Long codigo, String nome, String cpf, String telefone,
-			String email) {
-		super();
+	public Cliente(Long codigo, String nome, String cpf, String telefone, String email) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.cpf = cpf;

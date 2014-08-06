@@ -6,18 +6,17 @@
 <layout:template>
 	<jsp:attribute name="scriptsEspecificos">
 <script type="text/javascript">
-	$("#nome-auto").autocomplete({
+	$("#nome").autocomplete({
 		source : '<c:url value="/clientes/busca.json"/>',
 		minLength : 2,
 		dataType : "json",
 		select : function(event, ui) {
-			$("#nome-auto").val(ui.item.nome);
-			$("#codigo").val(ui.item.codigo);
+			$("#nome").val(ui.item.nome);
 			return false;
 		}
 	}).data("ui-autocomplete")._renderItem = function(ul, item) {
 		return $("<li></li>").data("item.autocomplete", item).append(
-				"<a>" + item.codigo + " - " + item.nome + "</a>").appendTo(ul);
+				"<a>" + item.nome + "</a>").appendTo(ul);
 	}
 </script>
 </jsp:attribute>
@@ -37,15 +36,13 @@
 				<button type="submit" class="btn btn-primary">
 				<span class="glyphicon glyphicon-search"></span> Pesquisar</button>
 			</div>
+			<div class="form-group">
+				<a href="${linkTo[ClienteController].listar}">
+					<button type="button" class="btn btn-primary" formmethod="get">
+					<span class="glyphicon glyphicon-refresh"></span> Limpar</button>
+				</a>
+			</div>
 		</form>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12">
-			<p>Exemplo auto complete</p>
-			<label for="nome">Nome</label>
-			<input name="nome-auto" id="nome-auto" autocomplete="off" />
-		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
@@ -60,6 +57,9 @@
 					<tr>
 						<th>Código</th>
 						<th>Nome</th>
+						<th>CPF</th>
+						<th>Telefone</th>
+						<th>Email</th>
 						<th>Opções</th>
 					</tr>
 				</thead>
@@ -68,6 +68,9 @@
 						<tr>
 							<td>${cliente.codigo}</td>
 							<td>${cliente.nome}</td>
+							<td>${cliente.cpf}</td>
+							<td>${cliente.telefone}</td>
+							<td>${cliente.email}</td>
 							<td width="20%">
 								<form action="${linkTo[ClienteController].remover(cliente)}"
 										method="post">

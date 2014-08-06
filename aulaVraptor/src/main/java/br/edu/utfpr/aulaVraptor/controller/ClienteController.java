@@ -20,19 +20,14 @@ import br.com.caelum.vraptor.validator.Validator;
 import br.edu.utfpr.aulaVraptor.dao.ClienteDAO;
 import br.edu.utfpr.aulaVraptor.model.Cliente;
 
-@Controller
-@Path("/clientes")
+@Controller @Path("/clientes")
 public class ClienteController {
 
-	@Inject
-	private ClienteDAO dao;
-	@Inject
-	private Result result;
-	@Inject
-	private Validator validator;
+	@Inject private ClienteDAO dao;
+	@Inject private Result result;
+	@Inject private Validator validator;
 	
-	@Get
-	@Path("/novo")
+	@Get @Path("/novo")
 	public void form(){
 	}
 
@@ -43,34 +38,29 @@ public class ClienteController {
         result.redirectTo(this).listar();
     }
 	
-	@Delete
-	@Path("/{cliente.codigo}")
+	@Delete @Path("/{cliente.codigo}")
 	public void remover(Cliente cliente) {
         dao.remover(Cliente.class, cliente.getCodigo());
         result.redirectTo(this).listar();
     }
 	
-	@Put
-	@Path("/{cliente.codigo}")
+	@Put @Path("/{cliente.codigo}")
 	public void alterar(Cliente cliente) {
         dao.alterar(cliente);
         result.redirectTo(this).listar();
     }
 	
-	@Get
-	@Path("/{cliente.codigo}")
+	@Get @Path("/{cliente.codigo}")
     public Cliente visualizar(Cliente cliente) {
         return dao.load(cliente.getCodigo());
     }
 
-	@Get
-	@Path("")
+	@Get @Path("")
     public List<Cliente> listar() {
         return dao.listAll();
     }
 	
-	@Get
-	@Path("/pesquisar")
+	@Get @Path("/pesquisar")
 	@IncludeParameters
 	public void listar(Long codigo, String nome){
 		if(codigo != null){
@@ -80,8 +70,7 @@ public class ClienteController {
 		result.include("clienteList", clientes);
 	}
 	
-	@Get
-	@Path("/busca.json")
+	@Get @Path("/busca.json")
 	public void buscaJson(String term){
 		List<Cliente> clientes = dao.list(term);
 		result.use(json()).withoutRoot().from(clientes).serialize();

@@ -20,21 +20,14 @@ import br.com.caelum.vraptor.validator.Validator;
 import br.edu.utfpr.aulaVraptor.dao.CategoriaDAO;
 import br.edu.utfpr.aulaVraptor.model.Categoria;
 
-@Controller
-@Path("/categorias")
+@Controller @Path("/categorias")
 public class CategoriaController {
 	
-	@Inject
-	private CategoriaDAO dao;
+	@Inject private CategoriaDAO dao;
+	@Inject private Validator validator;
+	@Inject private Result result;
 	
-	@Inject
-	private Validator validator;
-	
-	@Inject
-	private Result result;
-	
-	@Get
-	@Path("/novo")
+	@Get @Path("/novo")
 	public void form() {
 	}
 	
@@ -45,34 +38,29 @@ public class CategoriaController {
 		result.redirectTo(this).listar();
 	}
 	
-	@Delete
-	@Path("/{categoria.codigo}")
+	@Delete @Path("/{categoria.codigo}")
 	public void remover(Categoria categoria) {
 		dao.remover(Categoria.class, categoria.getCodigo());
 		result.redirectTo(this).listar();
 	}
 	
-	@Put
-	@Path("/{categoria.codigo}")
+	@Put @Path("/{categoria.codigo}")
 	public void alterar(Categoria categoria) {
 		dao.alterar(categoria);
 		result.redirectTo(this).listar();
 	}
 	
-	@Get
-	@Path("/{categoria.codigo}")
+	@Get @Path("/{categoria.codigo}")
 	public Categoria visualizar(Categoria categoria) {
 		return dao.load(categoria.getCodigo());
 	}
 	
-	@Get
-	@Path("")
+	@Get @Path("")
     public List<Categoria> listar() {
         return dao.listAll();
     }
 	
-	@Get
-	@Path("/pesquisar")
+	@Get @Path("/pesquisar")
 	@IncludeParameters
 	public void listar(Long codigo, String nome) {
 		if (codigo != null) {
@@ -82,8 +70,7 @@ public class CategoriaController {
 		result.include("categoriaList", categorias);
 	}
 	
-	@Get
-	@Path("/busca.json")
+	@Get @Path("/busca.json")
 	public void buscaJson(String term) {
 		List<Categoria> categorias = dao.list(term);
 		result.use(json()).withoutRoot().from(categorias).serialize();

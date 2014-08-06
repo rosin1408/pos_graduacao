@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
-public @Data class VendaProduto {
+public @Data class ItensPedido {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -19,8 +19,8 @@ public @Data class VendaProduto {
 	
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name="codigo_venda", referencedColumnName="codigo")
-    private Venda venda;
+	@JoinColumn(name="codigo_pedido", referencedColumnName="codigo")
+    private Pedido pedido;
 	
 	@NotNull
 	@ManyToOne
@@ -33,18 +33,17 @@ public @Data class VendaProduto {
 	@NotNull
     private Double valor;
 
-    public VendaProduto() {
+    public ItensPedido() {
     }
 
-	public VendaProduto(Long codigo) {
+	public ItensPedido(Long codigo) {
 		super();
 		this.codigo = codigo;
 	}
 
-	public VendaProduto(Long codigo, Venda venda, Produto produto,
-			Double quantidade, Double valor) {
+	public ItensPedido(Long codigo, Pedido pedido, Produto produto, Double quantidade, Double valor) {
 		this.codigo = codigo;
-		this.venda = venda;
+		this.pedido = pedido;
 		this.produto = produto;
 		this.quantidade = quantidade;
 		this.valor = valor;

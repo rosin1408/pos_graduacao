@@ -11,17 +11,17 @@ import br.edu.utfpr.aulaVraptor.model.Produto;
 public class ProdutoDAO extends GenericDAO<Produto> {
 
 	public List<Produto> listAll() {
-		return em.createQuery("select o from Produto o", Produto.class).getResultList();
+		return em.createQuery("select p from Produto p", Produto.class).getResultList();
 	}
 
 	public Produto load(Long codigo) {
-		TypedQuery<Produto> query = em.createQuery("select o from Produto o where o.codigo=:codigo", Produto.class);
+		TypedQuery<Produto> query = em.createQuery("select p from Produto p where p.codigo=:codigo", Produto.class);
 		query.setParameter("codigo", codigo);
 		return query.getSingleResult();
 	}
 
 	public List<Produto> list(String nome) {
-		TypedQuery<Produto> query = em.createQuery("select o from Produto o where o.nome like :nome", Produto.class);
+		TypedQuery<Produto> query = em.createQuery("select p from Produto p where upper(p.nome) like upper(:nome)", Produto.class);
 		query.setParameter("nome", "%"+nome+"%");
 		return query.getResultList();
 	}

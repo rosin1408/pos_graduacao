@@ -4,12 +4,26 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="layout" tagdir="/WEB-INF/tags/layout"%>
 <layout:template>
-	<jsp:attribute name="scriptsEspecificos">
+<jsp:attribute name="scriptsEspecificos">
+<script type="text/javascript">
+	$("#nome").autocomplete({
+		source : '<c:url value="/produtos/busca.json"/>',
+		minLength : 2,
+		dataType : "json",
+		select : function(event, ui) {
+			$("#nome").val(ui.item.nome);
+			return false;
+		}
+	}).data("ui-autocomplete")._renderItem = function(ul, item) {
+		return $("<li></li>").data("item.autocomplete", item).append(
+				"<a>" + item.nome + "</a>").appendTo(ul);
+	}
+</script>
 </jsp:attribute>
 	<jsp:body>
 	<div class="well">
 		<form class="form-inline"
-				action="<c:url value="/produtoss/pesquisar"/>">
+				action="<c:url value="/produtos/pesquisar"/>">
 			<div class="form-group">
 				<label for="codigo">Código</label>
 				<input name="codigo" id="codigo" value="${codigo}" />
@@ -21,6 +35,12 @@
   			<div class="form-group">
 				<button type="submit" class="btn btn-primary">
 				<span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+			</div>
+			<div class="form-group">
+				<a href="${linkTo[ProdutoController].listar}">
+					<button type="button" class="btn btn-primary" formmethod="get">
+					<span class="glyphicon glyphicon-refresh"></span> Limpar</button>
+				</a>
 			</div>
 		</form>
 	</div>

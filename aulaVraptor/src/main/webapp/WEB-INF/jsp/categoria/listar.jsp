@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="layout" tagdir="/WEB-INF/tags/layout"%>
 <layout:template>
-	<jsp:attribute name="scriptsEspecificos">
+<jsp:attribute name="scriptsEspecificos">
 <script type="text/javascript">
 	$("#nome").autocomplete({
 		source : '<c:url value="/categorias/busca.json"/>',
