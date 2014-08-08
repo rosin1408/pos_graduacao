@@ -2,6 +2,7 @@ package br.edu.utfpr.aulaVraptor.controller;
 
 import static br.com.caelum.vraptor.view.Results.json;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,6 +19,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.caelum.vraptor.validator.Validator;
 import br.edu.utfpr.aulaVraptor.dao.PedidoDAO;
+import br.edu.utfpr.aulaVraptor.model.ItemPedido;
 import br.edu.utfpr.aulaVraptor.model.Pedido;
 
 @Controller
@@ -27,9 +29,12 @@ public class PedidoController {
 	@Inject private PedidoDAO dao;
 	@Inject private Validator validator;
 	@Inject private Result result;
+	@Inject private Pedido pedido;
 	
 	@Get @Path("/novo")
 	public void form() {
+		pedido.setItensPedido(new ArrayList<ItemPedido>());
+		result.include("pedido", pedido);
 	}
 	
 	@Post
@@ -75,6 +80,6 @@ public class PedidoController {
 	@Get @Path("/busca.json")
 	public void buscaJson(String term) {
 		List<Pedido> pedidos = dao.list(term);
-		result.use(json()).withoutRoot().from(pedidos).serialize();;
+		result.use(json()).withoutRoot().from(pedidos).serialize();
 	}
 }

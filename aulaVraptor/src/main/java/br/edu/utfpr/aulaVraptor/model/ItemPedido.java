@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
-public @Data class ItensPedido {
+public @Data class ItemPedido {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,15 +33,15 @@ public @Data class ItensPedido {
 	@NotNull
     private Double valor;
 
-    public ItensPedido() {
+    public ItemPedido() {
     }
 
-	public ItensPedido(Long codigo) {
+	public ItemPedido(Long codigo) {
 		super();
 		this.codigo = codigo;
 	}
 
-	public ItensPedido(Long codigo, Pedido pedido, Produto produto, Double quantidade, Double valor) {
+	public ItemPedido(Long codigo, Pedido pedido, Produto produto, Double quantidade, Double valor) {
 		this.codigo = codigo;
 		this.pedido = pedido;
 		this.produto = produto;

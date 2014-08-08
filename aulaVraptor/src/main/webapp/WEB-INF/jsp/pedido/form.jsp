@@ -19,6 +19,20 @@
 			return $("<li></li>").data("item.autocomplete", item).append(
 					"<a>" + item.nome + "</a>").appendTo(ul);
 		}
+
+		$("#produto").autocomplete({
+			source : '<c:url value="/produtos/busca.json"/>',
+			minLength : 2,
+			dataType : "json",
+			select : function(event, ui) {
+				$("#produto").val(ui.item.nome);
+				$("#codigoProduto").val(ui.item.codigo);
+				return false;
+			}
+		}).data("ui-autocomplete")._renderItem = function(ul, item) {
+			return $("<li></li>").data("item.autocomplete", item).append(
+					"<a>" + item.nome + "</a>").appendTo(ul);
+		}
 	</script>
 </jsp:attribute>
 <jsp:body>
@@ -60,6 +74,43 @@
 			</div>
 		</fieldset>
 		<input type="hidden" name="pedido.cliente.codigo" id="codigoCliente"  value="${pedido.cliente.codigo}"/>
+		<input type="hidden" name="pedido.itensPedido" id="itensPedido"  value="${pedido.itensPedido}"/>
+	</form>
+	<form class="form-horizontal" action="${linkTo[ItemPedidoController].adicionar}" method="post">
+		<fieldset>
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-xs-3 control-label" for="produto">Produto:</label>
+				<div class="col-xs-6">
+					<input id="produto" name="itemPedido.produto.nome" placeholder=""
+						class="form-control input-md" type="text" value="${itemPedido.produto.nome}">
+					<input type="hidden" name="itemPedido.produto.codigo" id="codigoProduto" value="${itemPedido.produto.codigo}"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-3 control-label" for="valor">Quantidade:</label>
+				<div class="col-xs-6">
+					<input id="quantidade" name="itemPedido.quantidade" placeholder="" value="${itemPedido.quantidade}"
+						class="form-control input-md" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-3 control-label" for="valor">Valor:</label>
+				<div class="col-xs-6">
+					<input id="valor" name="itemPedido.valor" placeholder="" value="${itemPedido.valor}"
+						class="form-control input-md" type="text">
+				</div>
+			</div>
+			<!-- Button -->
+			<div class="form-group">
+				<label class="col-xs-3 control-label" for="save"></label>
+				<div class="col-xs-8">
+					<button id="save" name="save" class="btn btn-primary">Adicionar</button>
+				</div>
+			</div>
+		</fieldset>
+		
+		<input type="hidden" name="itemPedido.pedido" id="pedido" value="${pedido}"/>
 	</form>
 </jsp:body>
 </layout:template>

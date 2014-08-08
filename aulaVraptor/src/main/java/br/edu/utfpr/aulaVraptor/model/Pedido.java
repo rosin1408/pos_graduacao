@@ -1,6 +1,6 @@
 package br.edu.utfpr.aulaVraptor.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
@@ -27,7 +29,8 @@ public @Data class Pedido {
 	
 	@NotNull
 	@Column(name="data_pedido")
-    private LocalDate dataPedido;
+	@Temporal(TemporalType.DATE)
+    private Date dataPedido;
 	
 	@NotNull
 	@ManyToOne
@@ -36,7 +39,7 @@ public @Data class Pedido {
 	
 	@NotNull
 	@OneToMany(mappedBy="pedido")
-	private List<ItensPedido> itensPedido;
+	private List<ItemPedido> itensPedido;
 
     public Pedido() {
     }
@@ -45,7 +48,7 @@ public @Data class Pedido {
 		this.codigo = codigo;
 	}
 
-	public Pedido(Long codigo, Integer numeroDocumento, LocalDate dataPedido, Cliente cliente) {
+	public Pedido(Long codigo, Integer numeroDocumento, Date dataPedido, Cliente cliente) {
 		this.codigo = codigo;
 		this.numeroDocumento = numeroDocumento;
 		this.dataPedido = dataPedido;
