@@ -33,8 +33,8 @@ public class PedidoController {
 	
 	@Get @Path("/novo")
 	public void form() {
-		pedido.setItensPedido(new ArrayList<ItemPedido>());
-		result.include("pedido", pedido);
+		/*pedido.setItensPedido(new ArrayList<ItemPedido>());
+		result.include("pedido", pedido);*/
 	}
 	
 	@Post

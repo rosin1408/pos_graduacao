@@ -110,7 +110,7 @@
 			</div>
 		</fieldset>
 		
-		<input type="hidden" name="itemPedido.pedido" id="pedido" value="${pedido}"/>
+		<%-- <input type="hidden" name="itemPedido.pedido" id="pedido" value="${pedido}"/> --%>
 	</form>
 </jsp:body>
 </layout:template>

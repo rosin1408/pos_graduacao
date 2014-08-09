@@ -3,6 +3,7 @@ package br.edu.utfpr.aulaVraptor.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
+@SessionScoped
 @Entity
 public @Data class Pedido {
 	

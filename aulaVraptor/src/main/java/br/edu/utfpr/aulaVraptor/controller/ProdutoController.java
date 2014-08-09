@@ -78,4 +78,9 @@ public class ProdutoController {
 		List<Produto> categorias = dao.list(term);
 		result.use(json()).withoutRoot().from(categorias).serialize();
 	}
+	
+	@Get @Path("/lista.json")
+	public void listaJson() {
+		result.use(json()).withoutRoot().from(dao.listAll()).serialize();
+	}
 }
