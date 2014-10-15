@@ -8,12 +8,6 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.edu.utfpr.aulaVraptor.model.Cliente;
 
-/**
- * Controlador básico para exemplo inicial de funcionamento dos controladores.
- * @author forchesatto
- *
- */
-
 @Controller
 public class IndexController {
 	
