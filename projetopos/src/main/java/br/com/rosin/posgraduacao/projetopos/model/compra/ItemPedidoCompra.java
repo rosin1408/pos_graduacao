@@ -1,5 +1,7 @@
 package br.com.rosin.posgraduacao.projetopos.model.compra;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +18,10 @@ import br.com.rosin.posgraduacao.projetopos.model.produto.Produto;
  * @author Roberto
  * @data 14/10/2014
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name="venda_item_pedido_venda")
-public @Data class ItemPedidoCompra {
+public @Data class ItemPedidoCompra implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

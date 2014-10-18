@@ -1,5 +1,6 @@
 package br.com.rosin.posgraduacao.projetopos.model.pessoa;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -19,9 +20,10 @@ import lombok.Data;
  * @author Roberto
  * @data 13/10/2014
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name="pessoa_cidade")
-public @Data class Cidade {
+public @Data class Cidade implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

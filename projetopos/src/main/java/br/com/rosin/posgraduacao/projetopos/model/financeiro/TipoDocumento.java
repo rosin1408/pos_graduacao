@@ -3,6 +3,8 @@
  */
 package br.com.rosin.posgraduacao.projetopos.model.financeiro;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,9 +19,10 @@ import lombok.Data;
  * @data 06/10/2014
  * 
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name="financeiro_tipo_documento")
-public @Data class TipoDocumento {
+public @Data class TipoDocumento implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -1,5 +1,6 @@
 package br.com.rosin.posgraduacao.projetopos.model.pessoa;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,10 +17,11 @@ import lombok.EqualsAndHashCode;
  * @author Roberto
  * @data 13/10/2014
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name="pessoa_fornecedor")
 @EqualsAndHashCode(callSuper=true)
-public @Data class Fornecedor extends Pessoa {
+public @Data class Fornecedor extends Pessoa implements Serializable {
 	
 	private String cnpj;
 	

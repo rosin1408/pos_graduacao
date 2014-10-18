@@ -3,6 +3,8 @@
  */
 package br.com.rosin.posgraduacao.projetopos.model.venda;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,9 +20,10 @@ import lombok.Data;
  * @author Roberto
  * @data 07/10/2014
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name="venda_item_pedido_venda")
-public @Data class ItemPedidoVenda {
+public @Data class ItemPedidoVenda implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

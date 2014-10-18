@@ -1,5 +1,6 @@
 package br.com.rosin.posgraduacao.projetopos.model.financeiro;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -19,9 +20,10 @@ import lombok.Data;
  * @author Roberto
  * @data 06/10/2014
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name="financeiro_caixa")
-public @Data class Caixa {
+public @Data class Caixa implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

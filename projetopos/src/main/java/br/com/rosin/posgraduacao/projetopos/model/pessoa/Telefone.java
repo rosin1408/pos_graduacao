@@ -1,5 +1,7 @@
 package br.com.rosin.posgraduacao.projetopos.model.pessoa;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -17,9 +19,10 @@ import lombok.Data;
  * @author Roberto
  * @data 13/10/2014
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name="pessoa_telefone")
-public @Data class Telefone {
+public @Data class Telefone implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

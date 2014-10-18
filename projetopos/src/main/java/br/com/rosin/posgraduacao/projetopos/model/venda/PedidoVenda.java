@@ -1,5 +1,6 @@
 package br.com.rosin.posgraduacao.projetopos.model.venda;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,9 +22,10 @@ import lombok.Data;
  * @author Roberto
  * @data 07/10/2014
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name="venda_pedido_venda")
-public @Data class PedidoVenda {
+public @Data class PedidoVenda implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

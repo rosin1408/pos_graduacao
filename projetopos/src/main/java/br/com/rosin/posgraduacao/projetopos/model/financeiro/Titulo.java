@@ -3,6 +3,7 @@
  */
 package br.com.rosin.posgraduacao.projetopos.model.financeiro;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -22,9 +23,10 @@ import lombok.Data;
  * @author Roberto
  * @data 06/10/2014
  */
+@SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public @Data abstract class Titulo {
+public @Data abstract class Titulo implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)

@@ -3,6 +3,8 @@
  */
 package br.com.rosin.posgraduacao.projetopos.model.servico;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,9 +20,10 @@ import lombok.Data;
  * @author Roberto
  * @data 07/10/2014
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "servico_servico_ordem")
-public @Data class ServicoOrdem {
+public @Data class ServicoOrdem implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

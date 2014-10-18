@@ -3,6 +3,7 @@
  */
 package br.com.rosin.posgraduacao.projetopos.model.pessoa;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,10 +22,11 @@ import lombok.ToString;
  * @author Roberto
  * @data 13/10/2014
  */
+@SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 @ToString
-public @Data abstract class Pessoa {
+public @Data abstract class Pessoa implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)

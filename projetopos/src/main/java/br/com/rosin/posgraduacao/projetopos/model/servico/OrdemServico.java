@@ -3,6 +3,7 @@
  */
 package br.com.rosin.posgraduacao.projetopos.model.servico;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,9 +24,10 @@ import lombok.Data;
  * @author Roberto
  * @data 07/10/2014
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name="servico_ordem")
-public @Data class OrdemServico {
+public @Data class OrdemServico implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

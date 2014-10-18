@@ -3,6 +3,7 @@
  */
 package br.com.rosin.posgraduacao.projetopos.model.financeiro;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -22,10 +23,11 @@ import br.com.rosin.posgraduacao.projetopos.model.venda.PedidoVenda;
  * @author Roberto
  * @data 06/10/2014
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name="financeiro_contas_receber")
 @EqualsAndHashCode(callSuper=true)
-public @Data class ContaReceber extends Titulo {
+public @Data class ContaReceber extends Titulo implements Serializable {
 	
 	@Column(name="data_recebimento")
 	private LocalDate dataRecebimento;
