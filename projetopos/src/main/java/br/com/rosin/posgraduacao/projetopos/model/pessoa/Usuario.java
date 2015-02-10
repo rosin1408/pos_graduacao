@@ -26,7 +26,7 @@ public @Data class Usuario extends Pessoa implements Serializable {
 	}
 	
 	public Usuario(Integer codigo) {
-		setCodigo(codigo);
+		super.setCodigo(codigo);
 	}
 	
 	public Usuario(String usuario, String senha) {
